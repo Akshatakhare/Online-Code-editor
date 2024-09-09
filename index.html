@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Code Editor</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/3c00d46cd3.js" crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header>
+        <h4><i class="fa-solid fa-circle fa-fade fa-sm" style="color: #08dd9d;"></i> Live Code Editor <i
+                class="fa-solid fa-code-branch" style="color: #B197FC;"></i></h4>
+        <div class="topnav">
+            <a href="#home">Home</a> <!--  class="active" */  -->
+            <a href="#help">Help</a>
+            <a href="#signin" class="sign"><span onclick="openNav()">Sign In</span></a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="top">
+
+            <label for=""><i class="fa-solid fa-code" style="color: #ea2e2e;"></i> HTML</label>
+            <Textarea id="html-code" onkeyup="run()" ; oninput="update(this.value);"></textarea>
+            
+
+            <label for=""><i class="fa-solid fa-star-of-life" style="color: #74C0FC;"></i> CSS</label>
+            <Textarea id="css-code" onkeyup="run()" ; oninput="update(this.value);"></textarea>
+            
+
+            <label for=""><i class='bx bx-code-curly' style='color:#f1b30d'></i> JAVASCRIPT</label>
+            <Textarea id="js-code" onkeyup="run()" ; oninput="update(this.value);"></textarea>
+        </div>
+        <div class="down">
+            <label for=""><i class="fa-solid fa-play"></i> Output</label>
+            <iframe id="output"></iframe>
+        </div>
+    </div>
+    <script>
+        function run() {
+            let htmlCode = document.getElementById("html-code").value;
+            let cssCode = document.getElementById("css-code").value;
+            let jsCode = document.getElementById("js-code").value;
+            let output = document.getElementById("output");
+
+            output.contentDocument.body.innerHTML = htmlCode + "<style>" + cssCode + "/style";
+            output.contentWindow.eval(jsCode);
+
+            
+
+        }
+    </script>
+</body>
+
+</html>
